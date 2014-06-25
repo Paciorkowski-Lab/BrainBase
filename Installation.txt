@@ -1,7 +1,7 @@
 The following steps will install BrainBase:
 
 1) Install Perl Catalyst
-I'm really sorry about this. Perl Catalyst is fantastic and amazing when it's working. But installation can sometimes be a route to no happiness.
+I'm really sorry about this. Perl Catalyst is fantastic and amazing. But installation can sometimes be a route to no happiness.
 The most certain way to have a bad time installing Perl Catalyst is to try to install it on an old Linux system. By "old" I mean anything that is not running the most up-to-date kernel.
 I have the best experience installing Perl Catalyst right on top of a fresh Linux install. 
 # perl -MCPAN -e 'install Catalyst::Runtime'
