@@ -1,0 +1,48 @@
+The following steps will install BrainBase:
+
+1) Install Perl Catalyst
+I'm really sorry about this. Perl Catalyst is fantastic and amazing when it's working. But installation can sometimes be a route to no happiness.
+The most certain way to have a bad time installing Perl Catalyst is to try to install it on an old Linux system. By "old" I mean anything that is not running the most up-to-date kernel.
+I have the best experience installing Perl Catalyst right on top of a fresh Linux install. 
+# perl -MCPAN -e 'install Catalyst::Runtime'
+# perl -MCPAN -e 'install Catalyst::Devel'
+2) You will need the following Catalyst Plugins from CPAN:
+        Catalyst::Plugin::Authentication
+        Catalyst::Authentication::Realm::SimpleDB
+        Catalyst::Plugin::Session
+        Catalyst::Plugin::Session::Store::File
+        Catalyst::Plugin::Session::State::Cookie
+        Catalyst::Helper::Model::DBIC::Schema
+        Catalyst::Controller::FormBuilder
+        MooseX::MarkAsMethods
+        MooseX::NonMoose
+        DBIx::Class::Schema::Loader
+        DBIx::Class::TimeStamp
+        DBIx::Class::PassphraseColumn
+        HTML::FormHandler::Model::DBIC
+3) Put the Brainbase folder in your home directory
+4) You are going to be using MySQL. Most Linux distributions come with the MySQL database server and the client utility. If not, you can get it here: http://dev.mysql.com/downloads/mysql/
+5) Configure MySQL for your Linux system. For Slackware 14 I follow the directions here: http://www.neiland.net/blog/article/configuring-mysql-on-slackware/
+If you follow the directions closely you should have no problem.
+6) Once MySQL is configured log in as root:
+$ mysql -u root -p
+..
+mysql>
+Check that InnoDB is supported.
+mysql> SHOW VARIABLES LIKE 'have_innodb';
+If mysql returns the value as YES it is supported.
+7) Create a database called brainbase
+mysql> CREATE DATABASE brainbase;
+mysql> GRANT ALL PRIVILEGES ON brainbase.* TO [username] IDENTIFIED BY '[PASSWORD]';
+mysql> FLUSH PRIVILEGES;
+mysql> exit
+Bye
+8) Load your brainbase_users.sql into MySQL:
+$ mysql -u [username] -p brainbase < brainbase_users.sql
+This will give you tables named users, roles, and user_roles.
+9) Generate your Catalyst model:
+$ script/brainbase_create.pl model DB DBIC::Schema Brainbase:Schema create=static \
+     components=TimeStamp,PassphraseColumn dbi:mysql:brainbase '[username]' '[password]' '{ AutoCommit => 1 }'
+10) Open terminal and go to the ~/Brainbase folder
+11) Start the server!
+$ script/brainbase_server.pl -rp 3000 # or whatever port you might wish to run it on.
