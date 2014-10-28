@@ -14,6 +14,7 @@ I have the best experience installing Perl Catalyst right on top of a fresh Linu
         Catalyst::Plugin::Session::State::Cookie
         Catalyst::Helper::Model::DBIC::Schema
         Catalyst::Controller::FormBuilder
+        Catalyst::View::TT
         MooseX::MarkAsMethods
         MooseX::NonMoose
         DBIx::Class::Schema::Loader
@@ -22,8 +23,7 @@ I have the best experience installing Perl Catalyst right on top of a fresh Linu
         HTML::FormHandler::Model::DBIC
 3) Put the Brainbase folder in your home directory
 4) You are going to be using MySQL. Most Linux distributions come with the MySQL database server and the client utility. If not, you can get it here: http://dev.mysql.com/downloads/mysql/
-5) Configure MySQL for your Linux system. For Slackware 14 I follow the directions here: http://www.neiland.net/blog/article/configuring-mysql-on-slackware/
-If you follow the directions closely you should have no problem.
+5) Configure MySQL for your Linux system. For Slackware 14.1 I follow the directions here: http://docs.slackware.com/howtos:databases:install_mysql_on_slackware If you follow the directions closely you should have no problem.
 6) Once MySQL is configured log in as root:
 $ mysql -u root -p
 ..
