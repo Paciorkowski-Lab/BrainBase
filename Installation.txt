@@ -27,15 +27,15 @@ I have the best experience installing Perl Catalyst right on top of a fresh Linu
 6) Once MySQL is configured log in as root:
 $ mysql -u root -p
 ..
-mysql>
+MariaDB>
 Check that InnoDB is supported.
-mysql> SHOW VARIABLES LIKE 'have_innodb';
+MariaDB> SHOW VARIABLES LIKE 'have_innodb';
 If mysql returns the value as YES it is supported.
 7) Create a database called brainbase
-mysql> CREATE DATABASE brainbase;
-mysql> GRANT ALL PRIVILEGES ON brainbase.* TO [username] IDENTIFIED BY '[PASSWORD]';
-mysql> FLUSH PRIVILEGES;
-mysql> exit
+MariaDB> CREATE DATABASE brainbase;
+MariaDB> GRANT ALL PRIVILEGES ON brainbase.* TO [username] IDENTIFIED BY '[PASSWORD]';
+MariaDB> FLUSH PRIVILEGES;
+MariaDB> exit
 Bye
 8) Load your brainbase_users.sql into MySQL:
 $ mysql -u [username] -p brainbase < brainbase_users.sql
