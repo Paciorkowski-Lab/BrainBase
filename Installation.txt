@@ -41,7 +41,7 @@ Bye
 $ mysql -u [username] -p brainbase < brainbase_users.sql
 This will give you tables named users, roles, and user_roles.
 9) Generate your Catalyst model:
-$ script/brainbase_create.pl model DB DBIC::Schema Brainbase:Schema create=static \
+$ script/brainbase_create.pl model DB DBIC::Schema Brainbase::Schema create=static \
      components=TimeStamp,PassphraseColumn dbi:mysql:brainbase '[username]' '[password]' '{ AutoCommit => 1 }'
 10) Open terminal and go to the ~/Brainbase folder
 11) Start the server!
