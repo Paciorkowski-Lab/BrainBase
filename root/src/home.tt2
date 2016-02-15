@@ -1,0 +1,14 @@
+<img src="/static/images/home_purple.png"><h2>Home</h2>
+<h2>
+Welcome to BrainBase 1.0
+</h2>
+<p>
+<ul>
+	<li><img src="/static/images/blue_dot.png" height="10"> All subjects entered into BrainBase must have signed consent.</li><br />
+	<li><img src="/static/images/purple_dot.png" height="10"> No Protected Health Information may be entered here. Ever.</li><br />
+	<li><img src="/static/images/green_dot.png" height="10"> All data found here is confidential.</li><br />
+	<li><img src="/static/images/orange_dot.png" height="10"> Log out when you are done.</li><br />
+</ul>
+<br /><br />
+</p>
+
