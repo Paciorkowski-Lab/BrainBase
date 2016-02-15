@@ -1,0 +1,25 @@
+[% META title = 'All Subjects' -%]
+[% IF c.user_exists %]
+<h2>
+All Subjects
+</h2>
+<p>
+Total of [% subjects.size %] subjects.
+</p>
+<table class="stripeMe" cellspacing="1">
+<tr><th>Subject ID</th><th>Diagnoses</th><th>Affected</th><th>Lab</th><th>Phenotypes</th><th>Genotypes</th><th>Projects</th></tr>
+[% FOREACH subject IN subjects.sort('id') -%]
+	<tr>
+		<td><a href="../subjects/[% subject.id %]">[% subject.id %]</a></td>
+		<td><a href="../diagnoses/[% subject.diagnosis_1 %]">[% subject.diagnosis_1 %]</a> <a href="../diagnoses/[% subject.diagnosis_2 %]">[% subject.diagnosis_2 %]</a> <a href="../diagnoses/[% subject.diagnosis_3 %]">[% subject.diagnosis_3 %]</a> <a href="../diagnoses/[% subject.diagnosis_4 %]">[% subject.diagnosis_4 %]</a> <a href="../diagnoses/[% subject.diagnosis_5 %]">[% subject.diagnosis_5 %]</a></td>
+		<td>[% subject.affected %]</td>
+		<td>Sample #[% subject.sample_number_1 %] [% subject.sample_tissue_1 %] [% subject.sample_type_1 %] <br /> [% subject.room_1 %] <br /> Box#[% subject.box_1 %] [% subject.row_1 %][% subject.col_1 %]</td>
+		<td>Basic: [% subject.basic %]</td>
+		<td>Karyotype: [% subject.karyotype %] <br /> CMA: [% subject.cma %]</td>
+		<td><a href="../projects/[% subject.project_name_1 %]">[% subject.project_name_1 %]</a> <a href="../projects/[% subject.project_name_2 %]">[% subject.project_name_2 %]</a> <a href="../projects/[% subject.project_name_3 %]">[% subject.project_name_3 %]</a> <a href="../projects/[% subject.project_name_4 %]">[% subject.project_name_4 %]</a> <a href="../projects/[% subject.project_name_5 %]">[% subject.project_name_5 %]</a></td>
+		<td><a href="[%
+			c.uri_for(c.controller.action_for('edit'), [subject.id]) %]"><img src="/static/images/database_add_sm.png" title="Edit" ></a></td>	
+</tr>
+[% END -%]
+</table>
+[% END %]
