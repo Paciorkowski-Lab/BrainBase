@@ -1,0 +1,21 @@
+[% META title = 'Diagnoses' -%]
+[% IF c.user_exists %]
+<img src="/static/images/tag.png"><br />
+<h2>
+Diagnoses
+</h2>
+<p>
+Total of [% diagnoses.size %] diagnoses.
+</p>
+<table class="stripeMe" cellspacing="1">
+<tr><th>Code</th><th>Diagnosis</th><th>Definition</th></tr>
+[% FOREACH diagnosis IN diagnoses.sort('diagnosis_code') -%]
+<tr>
+<td><a href="../diagnoses/[% diagnosis.diagnosis_code %]">[% diagnosis.diagnosis_code %]</a></td>
+<td> [% diagnosis.diagnosis_name %]</td>
+<td> [% diagnosis.diagnosis_definition %]</td>
+</tr>
+[% END %]
+[% END %]
+</table>
+
