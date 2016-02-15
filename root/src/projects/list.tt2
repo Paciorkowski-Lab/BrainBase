@@ -1,0 +1,23 @@
+[% META title = 'Projects' -%]
+[% IF c.user_exists %]
+<img src="/static/images/light_bulb.png"><br />
+<h2>
+Projects
+</h2>
+<p>
+Total of [% projects.size %] projects.
+</p>
+<table class="stripeMe" cellspacing="1">
+<tr><th>Code</th><th>Name</th><th>Description</th><th>Funding</th><th>Start Date</th><th>End Date</th></tr>
+[% FOREACH project IN projects.sort('ts_project') -%]
+<tr>
+<td><a href="../projects/[% project.project_code %]">[% project.project_code %]</a></td>
+<td> [% project.project_name %]</td>
+<td> [% project.project_description %]</td>
+<td> [% project.project_funding %]</td>
+<td> [% project.project_start %]</td>
+<td> [% project.project_end %]</td>
+</tr>
+[% END %]
+[% END %]
+</table>
