@@ -1,0 +1,169 @@
+[% META title = 'Subject' -%]
+[% IF c.user_exists %]
+<img src="/static/images/user.png">
+<h2>Single Subject View</h2>
+[% FOREACH subject IN subjects %]
+<h2>[% subject.id %]</h2>
+<a href="[% c.uri_for(c.controller.action_for('edit'), [subject.id]) %]"><img src="/static/images/database_add.png" title="Edit" width="75px" ></a>
+<div id="boxwhite">
+<table>
+<tr><th>Diagnoses:</th><td> [% subject.diagnosis_1 %] [% subject.diagnosis_2 %] [% subject.diagnosis_3 %] [% subject.diagnosis_4 %] [% subject_diagnosis_5 %]</td></tr>
+<tr><th> Affected:</th><td> [% subject.affected %]</td></tr>
+</table>
+</div>
+<br /><br />
+<div id="boxblue">
+	<div id="headerDiv_peach"><br />
+		<div id="titleText">Demographics<br /><br /></div>
+		<a id="demographicsHeader" href="javascript:toggle(
+'demographicsContent','demographicsHeader');" ><img src="/static/images/down.png"></a>
+	</div>
+<div style="clear:both;">
+	</div>
+		<div id="contentDiv_blue">
+			<div id="demographicsContent" style="display:none;">
+<img src="/static/images/folder.png" width="50px" >
+<table>
+<tr><th>Gender: </th><td> [% subject.gender %]</td></tr>
+<tr><th>Race/Ethnicity: </th><td> [% subject.race %]/[% subject.ethnicity %]</td></tr>
+<tr><th>Descriptive ethnicity: </th><td> [% subject.descriptive_ethnicity %]</td></tr>
+</table>
+</div><!--myContent-->
+</div><!--headerDiv-->
+</div><!--box-->
+<br /><br />
+<div id="boxpeach">
+	<div id="headerDiv_peach"><br />
+		<div id="titleText">Lab<br /><br /></div>
+		<a id="labHeader" href="javascript:toggle(
+'labContent','labHeader');" ><img src="/static/images/down.png"></a>
+	</div>
+<div style="clear:both;">
+	</div>
+		<div id="contentDiv_peach">
+			<div id="labContent" style="display:none;">
+<img src="/static/images/sample.png" width="50px" >
+<table>
+[% IF subject.sample_number_1 != NULL %]<tr><th>Sample: #</th><td>[% subject.sample_number_1 %] [% subject.sample_tissue_1 %] derived [% subject.sample_type_1 %]. Collected [% subject.collection_date_1 %]. Extracted with [% subject.extraction_technique_1 %] by [% subject.extraction_by_1 %] on [% subject.extraction_date_1 %].</td></tr>
+<tr><th>Location:</th><td>[% subject.room_1 %] Box#[% subject.box_1 %] [% subject.row_1 %][% subject.col_1 %].</td></tr>
+<tr><th>Comments: </th><td>[% subject.sample_comments_1 %]</td></tr>
+[% END %]
+[% IF subject.sample_number_2 != NULL %]<tr><th>Sample: #</th><td>[% subject.sample_number_2 %] [% subject.sample_tissue_2 %] derived [% subject.sample_type_2 %]. Collected [% subject.collection_date_2 %]. Extracted with [% subject.extraction_technique_2 %] by [% subject.extraction_by_2 %] on [% subject.extraction_date_2 %].</td></tr>
+<tr><th>Location:</th><td>[% subject.room_2 %] Box#[% subject.box_2 %] [% subject.row_2 %][% subject.col_2 %].</td></tr>
+<tr><th>Comments: </th><td>[% subject.sample_comments_2 %]</td></tr>
+[% END %]
+[% IF subject.sample_number_3 != NULL %]<tr><th>Sample: #</th><td>[% subject.sample_number_3 %] [% subject.sample_tissue_3 %] derived [% subject.sample_type_3 %]. Collected [% subject.collection_date_3 %]. Extracted with [% subject.extraction_technique_3 %] by [% subject.extraction_by_3 %] on [% subject.extraction_date_3 %].</td></tr>
+<tr><th>Location:</th><td>[% subject.room_3 %] Box#[% subject.box_3 %] [% subject.row_3 %][% subject.col_3 %].</td></tr>
+<tr><th>Comments: </th><td>[% subject.sample_comments_3 %]</td></tr>
+[% END %]
+</table>
+</div><!--myContent-->
+</div><!--headerDiv-->
+</div><!--box-->
+<br /><br />
+<div id="boxpurple">
+	<div id="headerDiv_purple"><br />
+		<div id="titleText">Phenotypes<br /><br /></div>
+		<a id="phenoHeader" href="javascript:toggle(
+'phenoContent','phenoHeader');" ><img src="/static/images/down.png"></a>
+	</div>
+<div style="clear:both;">
+	</div>
+		<div id="contentDiv_purple">
+			<div id="phenoContent" style="display:none;">
+<img src="/static/images/book.png" width="50px" >
+<table>
+<tr><th>Basic: </th><td> [% subject.basic %]</td></tr>
+<tr><th>Dysmorphology: </th><td> [% subject.dysmorphology %]</td></tr>
+<tr><th>EEG: </th><td> [% subject.eeg %]</td></tr>
+<tr><td><img class="eeg" src="/static/images/subjects/phenotype/eeg/[% subject.id %]_eeg_1.jpg"></td></tr>
+<tr><th>GDI: </th><td> [% subject.gdi %]</td></tr>
+<tr><th>MRI: </th><td> [% subject.mri %]</td></tr>
+<tr><td><img class="mri" src="/static/images/subjects/phenotype/mri/[% subject.id %]_mri_sg.jpg" ><img class="mri" src="/static/images/subjects/phenotype/mri/[% subject.id %]_mri_ax.jpg" ><img class="mri" src="/static/images/subjects/phenotype/mri/[% subject.id %]_mri_cr.jpg" ></td></tr>
+<tr><th>Photo: </th><td> [% subject.photo %]</td></tr>
+<tr><th>Video: </th><td> [% subject.video %]</td></tr>
+</table>
+</div>
+</div>
+</div>
+<br /><br />
+<div id="boxgreen">
+	<div id="headerDiv_green"><br />
+		<div id="titleText">Genotypes<br /><br /></div>
+		<a id="genoHeader" href="javascript:toggle(
+'genoContent','genoHeader');" ><img src="/static/images/down.png"></a>
+		</div>
+<div style="clear:both;">
+	</div>
+		<div id="contentDiv_green">
+			<div id="genoContent" style="display:none;">
+<img src="/static/images/genetics.png" width="50px" >
+<table>
+[% IF subject.karyotype != NULL %]
+<tr><th>Karyotype:</th><td> [% subject.karyotype %]</td></tr>
+[% END %]
+<tr><td><img class="karyotype" src="/static/images/subjects/genotype/karyotype/[% subject.id %]_karyotype.jpg"></td></tr>
+[% IF subject.cma != NULL %]
+<tr><th>CMA:</th><td> [% subject.cma %]</td></tr>
+<tr><th>CMA diagnosis:</th><td> [% subject.cma_dx %]</td></tr>
+<tr><th>Platform:</th><td> [% subject.cma_platform %] (performed at [% subject.cma_where %])</td></tr>
+[% IF subject.cma_cnv_1_chr !=NULL %]
+<tr><th>CNV 1 coordinates:</th><td><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?position=chr[% subject.cma_cnv_1_chr %]:[% subject.cma_cnv_1_start %]-[% subject.cma_cnv_1_end %]&cytoBand=full&knownGene=pack&dgv=dense&genomicSuperDups=dense&all_mrna=hide&mrna=hide&intronEst=hide&phyloP46wauPlacental=hide&multiz46way=hide&snp137Common=hide&rmsk=hide&wgEncodeRegTfbsClusteredV2=hide&wgEncodeRegMarkH3k27ac=hide&wgEncodeGencodeV12=hide&wgEncodeGencodeV7=hide&wgEncodeRegDnaseClustered=hide" target="_blank" alt="Visualize in UCSC" title="Visualize in UCSC">chr[% subject.cma_cnv_1_chr %]:[% subject.cma_cnv_1_start %]-[% subject.cma_cnv_1_end %]</a> (inheritance [% subject.cma_cnv_1_inher %])</td></tr>
+[% END %]
+[% IF subject.cma_cnv_2_chr !=NULL %]
+<tr><th>CNV 2 coordinates:</th><td><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?position=chr[% subject.cma_cnv_2_chr %]:[% subject.cma_cnv_2_start %]-[% subject.cma_cnv_2_end %]&cytoBand=full&knownGene=pack&dgv=dense&genomicSuperDups=dense&all_mrna=hide&mrna=hide&intronEst=hide&phyloP46wauPlacental=hide&multiz46way=hide&snp137Common=hide&rmsk=hide&wgEncodeRegTfbsClusteredV2=hide&wgEncodeRegMarkH3k27ac=hide&wgEncodeGencodeV12=hide&wgEncodeGencodeV7=hide&wgEncodeRegDnaseClustered=hide" target="_blank" alt="Visualize in UCSC" title="Visualize in UCSC">chr[% subject.cma_cnv_2_chr %]:[% subject.cma_cnv_2_start %]-[% subject.cma_cnv_2_end %]</a> (inheritance [% subject.cma_cnv_2_inher %])</td></tr>
+[% END %]
+[% IF subject.cma_cnv_3_chr !=NULL %]
+<tr><th>CNV 3 coordinates:</th><td><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?position=chr[% subject.cma_cnv_3_chr %]:[% subject.cma_cnv_3_start %]-[% subject.cma_cnv_3_end %]&cytoBand=full&knownGene=pack&dgv=dense&genomicSuperDups=dense&all_mrna=hide&mrna=hide&intronEst=hide&phyloP46wauPlacental=hide&multiz46way=hide&snp137Common=hide&rmsk=hide&wgEncodeRegTfbsClusteredV2=hide&wgEncodeRegMarkH3k27ac=hide&wgEncodeGEncodeV12=hide&wgEncodeGencodeV7=hide&wgEncodeRegDnaseClustered-hide" target="_blank" alt="Visualize in UCSC" title="Visualize in UCSC">chr[% subject.cma_cnv_3_chr %]:[% subject.cma_cnv_3_start %]-[% subject.cma_cnv_3_end %]</a> (inheritance [% subject.cma_cnv_3_inher %])</td></tr>
+[% END %]
+[% END %]
+<tr><td><img src="/static/images/subjects/genotype/cma/[% subject.id %]_cma.jpg"></td></tr>
+[% IF subject.gene_clinical != NULL %]
+<tr><th>Genes (clinical):</th><td> [% subject.gene_clinical %]</td></tr>
+[% END %]
+[% IF subject.gene_research != NULL %]
+<tr><th>Genes (research):</th><td> [% subject.gene_research %]</td></tr>
+[% END %]
+[% IF subject.tes_1 != NULL %]
+<tr><th>Targeted exon capture:</th><td> [% subject.tes_1 %]</td></tr>
+<tr><th>Tracker</th></tr>
+<tr><th>Sent:</th><td>[% subject.tes_1_sent %]</td> <th>fastq:</th><td>[% subject.tes_1_fastq %]</td> <th>bam:</th><td>[% subject.tes_1_bam %]</td> <th>vcf:</th> <td>[% subject.tes_1_vcf %]</td> <th>vcf sseq indel:</th> <td>[% subject.tes_1_vcf_sseq_indel %]</td> <th>vcf sseq snv:</th> <td>[% subject.tes_1_sseq_snv %]</td> <th>Final variant results:</th> <td>[% subject.tes_1_final_results %]</td> <th>Sanger confirmation:</th> <td>[% subject.tes_1_sanger_confirm %]</td></tr>
+[% END %]
+[% IF subject.wes != NULL %]
+<tr><th>Whole exome sequencing:</th><td> [% subject.wes %]</td> </tr>
+<tr><th>Tracker</th></tr>
+<tr><th>Sent:</th><td>[% IF subject.wes_sent !=NULL %]<img src="/static/images/accept_sm.png">[% END %] </td> <th>fastq:</th><td>[% IF subject.wes_fastq !=NULL %]<img src="/static/images/accept_sm.png">[% END %] </td> <th>bam:</th><td>[% IF subject.wes_bam !=NULL %]<img src="/static/images/accept_sm.png">[% END %] </td> <th>vcf:</th> <td>[% IF subject.wes_vcf !=NULL %]<img src="/static/images/accept_sm.png">[% END %]</td> <th>vcf sseq indel:</th> <td>[% IF subject.wes_vcf_sseq_indel !=NULL %]<img src="/static/images/accept_sm.png">[% END %]</td> <th>vcf sseq snv:</th> <td>[% IF subject.wes_vcf_sseq_snv !=NULL %]<img src="/static/images/accept_sm.png">[% END %]</td> <th>Final variant results:</th> <td>[% subject.wes_final_results %]</td> <th>Sanger confirmation:</th> <td>[% IF subject.wes_sanger_confirm !=NULL %]<img src="/static/images/accept_sm.png">[% END %]</td></tr> 
+[% END %]
+[% IF subject.wgs != NULL %]
+<tr><th>Whole genome sequencing:</th><td> [% subject.wgs %]</td></tr>
+[% END %]
+[% IF subject.gexpa != NULL %]
+<tr><th>Gene expression array:</th><td> [% subject.gexpa %]</td></tr>
+[% END %]
+[% IF subject.rnaseq != NULL %]
+<tr><th>RNA-Seq:</th><td> [% subject.rnaseq %]</td></tr>
+[% END %]
+</table>
+</div>
+</div>
+</div>
+<br /><br />
+<div id="boxred">
+	<div id="headerDiv_red"><br />
+		<div id="titleText">Projects<br /><br /></div>
+		<a id="projectsHeader" href="javascript:toggle(
+'projectsContent','projectsHeader');"><img src="/static/images/down.png"></a>
+		</div>
+<div style="clear:both;">
+	</div>
+		<div id="contentDiv_red">
+			<div id="projectsContent" style="display:none;">
+<img src="/static/images/light_bulb.png" width="50px" >
+<table>
+<tr><td>[% subject.project_name_1 %] [% subject.project_name_2 %] [% subject.project_name_3 %] [% subject.project_name_4 %] [% subject.project_name_5 %]</td></tr>
+</table>
+</div>
+</div>
+</div>
+[% END %]
+[% END %]
