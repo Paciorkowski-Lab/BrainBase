@@ -1,0 +1,61 @@
+[% META title = 'Search' -%]
+[% IF c.user_exists %]
+<img src="/static/images/database_search.png"><h2>Search</h2>
+<br />
+<div id="imageleft"><a href="[% c.uri_for('/subjects/list') %]"><img src="/static/images/all_subjects_search.png" /></a></div>
+<div id="lefImageMargin"><b>Search by all</b><br /><br />
+Display all the subjects in the database.
+</div>
+<br /><br /><br /><br /><br />
+<div id="imageleft"><img src="/static/images/user_search.png" /></div>
+<div id="leftImageMargin>
+<form method="post" action="[% c.uri_for('/search_subject_id') %]">
+	<table>
+		<tr>
+			<th>Search by subject ID:</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="id" size="10" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Search ID" /></td>
+		</tr>
+	</table>
+</form>
+</div>
+<br /><br /><br /><br /><br />
+<div id="imageleft"><img src="/static/images/folder_search.png" /></div>
+<div id="leftImageMargin">
+<form method="post" action="[% c.uri_for('/search_diagnosis') %]">
+	<table>
+		<tr>
+			<th>Search by diagnosis:</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="diagnosis" size="20" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Search Diagnosis" /></td>
+		</tr>
+	</table>
+</form>
+</div>
+<br /><br /><br /><br /><br />
+<div id="imageleft"><img src="/static/images/light_bulb_search.png" /></div>
+<div id="leftImageMargin">
+<form method="post" action="[% c.uri_for('/search_project') %]">
+	<table>
+		<tr>
+			<th>Search by project:</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="project" size="20" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Search Project" /></td>
+		</tr>
+	</table>
+</form>
+</div>
+<br /><br /><br /><br />
+[% END %]
