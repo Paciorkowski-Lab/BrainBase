@@ -1,0 +1,12 @@
+[% META title = 'Create Subject' %]
+[% IF c.user_exists %]
+[%# Render the HTML::FormHandler Form %]
+<img src="/static/images/folder_edit.png" />
+<h2>
+Subject Data Entry
+</h2>
+<p>Enter information for the subject.</p>
+		[% form.render %]
+<br /><br />
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Return to subject list</a></p>
+[% END %]
